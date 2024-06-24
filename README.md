@@ -5,7 +5,7 @@ Scene1
 Scene2
 ![scene2](https://github.com/DamStell/TestTaskCIOP-PIB/blob/main/scene2.png)
 
-Script Documentation 
+Scripts Documentation 
 
 Script: LaserController
 
