@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Wcisnieto E");
+            Debug.Log("Used E");
 
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
@@ -226,17 +226,17 @@ public class PlayerController : MonoBehaviour
                 DoorController door = hit.collider.GetComponent<DoorController>();
                 if (door != null)
                 {
-                    Debug.Log("Znaleziono DoorController");
+                    Debug.Log("DoorController found");
                     door.Interact();
                 }
                 else
                 {
-                    Debug.Log("Nie znaleziono DoorController na trafionym obiekcie");
+                    Debug.Log("DoorController null");
                 }
             }
             else
             {
-                Debug.Log("Raycast nie trafil w zaden obiekt");
+                Debug.Log("Raycast hit in empty");
             }
         }
     }
@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour
     public void LoseLife()
     {
         lives--;
-        Debug.Log("Straciles zycie. Pozosta³o zyæ: " + lives);
+        Debug.Log("Lose Life. life: " + lives);
         if (lives <= 0)
         {
             //resultPanel.DisplayResults();
@@ -282,17 +282,7 @@ public class PlayerController : MonoBehaviour
         IsPlay = false;    
         totalTime = Time.time - startTime;
         resultPanel.DisplayResults();
-        Debug.Log("Wyniki gry:");
-        Debug.Log("Czas dzia³ania: " + totalTime + " sekund");
-        Debug.Log("Poprawnie zneutralizowane drzwi: " + doorsNeutralized);
-        Debug.Log("Poprawnie zneutralizowane pomieszczenia: " + roomsNeutralized);
-        Debug.Log("Pope³nione b³êdy:");
-        Debug.Log("Brak wykonania pomiaru: " + errorsNoMeasurement);
-        Debug.Log("Za du¿e ustawienie pierœcienia podczas neutralizacji drzwi: " + errorsHighRingSetting);
-        Debug.Log("Za ma³e ustawienie pierœcienia podczas neutralizacji drzwi: " + errorsLowRingSetting);
-        Debug.Log("Z³e ustawienie pierœcienia podczas strzelania w pomieszczeniu za drzwiami: " + errorsWrongRingSettingRoom);
-        Debug.Log("Pominiête œciany w pomieszczeniu za drzwiami: " + errorsSkippedWalls);
-        Debug.Log("Liczba œcian w pomieszczeniu za drzwiami trafionych wiêcej ni¿ raz: " + errorsMultipleHits);
+   
        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
