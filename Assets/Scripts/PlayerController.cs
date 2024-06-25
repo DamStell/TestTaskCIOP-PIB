@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
             HandleInteraction();
             HandleShooting();
             HandleDeviceMeasurement();
-            totalTime = Time.time - startTime;
+           // totalTime = Time.time - startTime;
                  // if the player opens all doors and leaves each room, the game will end
             if (OpenDoorCounter>=totalRooms && exitRoomCounter>=totalRooms)
             {
