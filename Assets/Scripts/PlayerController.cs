@@ -64,22 +64,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleMovement();
-        HandleRotation();
-        HandleRingSetting();
-        HandleInteraction();
-        HandleShooting();
-        HandleDeviceMeasurement();
+
         UpdateLifeDisplay();
         if (IsPlay)
         { 
+        
+            HandleMovement();
+            HandleRotation();
+            HandleRingSetting();
+            HandleInteraction();
+            HandleShooting();
+            HandleDeviceMeasurement();
             totalTime = Time.time - startTime;
+                 // if the player opens all doors and leaves each room, the game will end
+            if (OpenDoorCounter>=totalRooms && exitRoomCounter>=totalRooms)
+            {
+                ShowResults();
+            }
         }
-        // if the player opens all doors and leaves each room, the game will end
-        if (OpenDoorCounter>=totalRooms && exitRoomCounter>=totalRooms)
-        {
-            ShowResults();
-        }
+   
     }
 
     private void HandleMovement()
