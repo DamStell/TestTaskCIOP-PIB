@@ -14,6 +14,7 @@ public class LaserController : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        VisibleCursor();
         lineRenderer.startWidth = 0.01f;
         lineRenderer.endWidth = 0.01f;
     }
@@ -91,5 +92,10 @@ public class LaserController : MonoBehaviour
             highlightedObject = null;
             originalColorSet = false;
         }
+    }
+    
+    private void VisibleCursor()
+    {
+        Cursor.visible = false;
     }
 }
