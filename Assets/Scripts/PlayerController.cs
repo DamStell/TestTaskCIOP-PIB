@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         cameraTransform = Camera.main.transform;
         startTime = Time.time;
-
+        LockCursor();
         UpdateRingSettingText();
         UpdateLifeDisplay();
     }
@@ -281,6 +281,7 @@ public class PlayerController : MonoBehaviour
     {
         IsPlay = false;    
         totalTime = Time.time - startTime;
+        UnlockCursor();
         resultPanel.DisplayResults();
    
        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -292,6 +293,18 @@ public class PlayerController : MonoBehaviour
         {
             lifeDisplayController.SetLives(lives);
         }
+    }
+
+        private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 }
