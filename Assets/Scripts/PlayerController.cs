@@ -119,16 +119,18 @@ public class PlayerController : MonoBehaviour
         cameraTransform.localEulerAngles = new Vector3(xRotation, cameraTransform.localEulerAngles.y, 0);
     }
 
-    private void HandleRingSetting()
+       private void HandleRingSetting()
     {
         for (int i = 0; i <= 9; i++)
         {
-            KeyCode key = (KeyCode)((int)KeyCode.Alpha0 + i);
-            if (Input.GetKeyDown(key))
+            KeyCode alphaKey = (KeyCode)((int)KeyCode.Alpha0 + i);
+            KeyCode keypadKey = (KeyCode)((int)KeyCode.Keypad0 + i);
+
+            if (Input.GetKeyDown(alphaKey) || Input.GetKeyDown(keypadKey))
             {
                 ringSetting = i;
                 UpdateRingSettingText();
-                Debug.Log("Ustawienie pierœcienia: " + ringSetting);
+                Debug.Log("Ustawienie pierścienia: " + ringSetting);
                 break;
             }
         }
