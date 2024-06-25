@@ -6,6 +6,7 @@ public class RoomController : MonoBehaviour
 {
     private Dictionary<GameObject, bool> surfacesHit = new Dictionary<GameObject, bool>();
     private bool isPlayerInRoom = false;
+    private HashSet<GameObject> wallsWithMultipleHits = new HashSet<GameObject>();
 
     void Start()
     {
@@ -24,7 +25,6 @@ public class RoomController : MonoBehaviour
         {
             isPlayerInRoom = true;
             //Debug.Log("Player entered the room");
-            PlayerController.instance.correctShotsInRoom = 0;
         }
     }
 
@@ -66,9 +66,13 @@ public class RoomController : MonoBehaviour
                     PlayerController.instance.correctShotsInRoom++;
                 }
                 else
-                {   //excess shot
+                {   //walls with excess shot
                     StartCoroutine(ChangeColor(hitObject, Color.red)); 
-                    PlayerController.instance.errorsMultipleHits++;
+                    if (!wallsWithMultipleHits.Contains(hitObject))
+                    {
+                        wallsWithMultipleHits.Add(hitObject);
+                        PlayerController.instance.errorsMultipleHits++;
+                    }
                 }
             }
             else
