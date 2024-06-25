@@ -24,6 +24,7 @@ public class RoomController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRoom = true;
+            PlayerController.instance.correctShotsInRoom = 0;
             //Debug.Log("Player entered the room");
         }
     }
